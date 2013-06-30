@@ -1,0 +1,40 @@
+<html>
+<head>
+<style>
+	ul
+	{
+		list-style-type:none;
+		border-style:solid;
+	}
+
+</style>
+<script type="text/javascript">
+	function leftclick(evt){
+		document.getElementById('d').style.visibility="hidden"
+	}
+	function rightclick(evt){
+		evt.preventDefault();
+		var contextmenu =<ul > <li > my_menu </li><li > abcd </li><li> xyz</li> </ul>;
+		document.getElementById('d').innerHTML = contextmenu;
+		document.getElementById('d').style.marginTop=evt.clientY;
+		document.getElementById('d').style.marginLeft=evt.clientX;
+		document.getElementById('d').style.visibility="visible"
+		document.getElementById('d').style.height=150;
+		document.getElementById('d').style.width=150;
+	}	
+	if (document.addEventListener)
+	{
+	window.addEventListener("click", function(evt){leftclick(evt);}, false) //invoke function
+	window.addEventListener("contextmenu", function(evt){ rightclick(evt);}, false) //
+	evt.preventDefault();
+	}
+</script>
+
+</head>
+<body  >
+<div name="d" id="d" style.visibility="hidden" >
+</div>
+
+</body>
+</html>
+
