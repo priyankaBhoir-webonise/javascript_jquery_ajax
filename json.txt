@@ -1,0 +1,1 @@
+ [{"first":"duke.png"},{"second":"d_running.gif"},{"third":"box.gif"},{"fourth":"dukeplug.gif"}]

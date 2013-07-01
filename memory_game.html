@@ -1,0 +1,55 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>memory game</title>
+		<script src="jquery-1.8.2.js">
+		</script>
+		<script type="text/javascript">
+		function loadImage(evt)
+		{
+		
+			var xmlhttp;
+			var contextBoiler='<table  border width=100 align=CENTER><tr>';
+			var json_data;
+			var i=1;
+			//alert("page loaded");
+			if (window.XMLHttpRequest)
+			{
+  				xmlhttp=new XMLHttpRequest();
+			}
+
+			xmlhttp.open("GET","json.txt",true);
+			xmlhttp.send();
+			xmlhttp.onreadystatechange =function() {
+				if(xmlhttp.readyState==4)
+				{
+					json_data=xmlhttp.responseText;
+					alert(json_data);
+					var json = $.parseJSON(xmlhttp.responseText);
+					$(json).each(function(i,val){
+						$.each(val,function(k,v){
+							contextBoiler+='<td><img src="'+v+'" alt="img'+i+'">';
+							i=i+1;
+							if((i%3)==0)
+							{
+							contextBoiler+='</tr> <tr>';
+							}   
+							//alert(i);  
+					});
+					});
+			contextBoiler+='</table>';
+			//alert(contextBoiler);
+			document.getElementById('new_div').innerHTML=contextBoiler;
+				}
+			}
+
+			
+		}
+		
+		</script>
+	</head>
+
+<body onload=loadImage()>
+	<div id="new_div"></div>
+</body>
+</html>
